@@ -27,6 +27,7 @@ public class RedBoxUI
             ArrayList<String> availableTitles = new ArrayList<String>();
             availableTitles = rm.getAvailableMovies();
             System.out.println(availableTitles);
+            
       
             System.out.println("PRESS ENTER TO GO BACK TO THE MENU");
             sn.nextLine();         
@@ -35,7 +36,12 @@ public class RedBoxUI
          {
             System.out.println("What movie would you like to rent?");
             title = sn.nextLine();
-
+            if (rm.rent(title)){
+               System.out.println("You have rented your movie!");
+            }
+            else{
+               System.out.println("Sorry the movie is unavaliable");
+            }
             // Complete the code to rent a movie. This code should let the user
             // know if the movie was rented successfully or not (not could occur if
             // the movie they enter is not available).
@@ -44,6 +50,8 @@ public class RedBoxUI
          {
             System.out.println("What movie would you like to return?");
             title = sn.nextLine();
+            rm.returnMovie(title);
+            System.out.println("You have successfully returned!");
             
             // Complete the code to return a movie. Make sure to include a
             // message after the movie has been returned.
@@ -53,7 +61,10 @@ public class RedBoxUI
          {
             System.out.println("What movie would you like to search for?");
             title = sn.nextLine();
-            
+            if (rm.searchForMovie(title) >= 0){
+               System.out.println("Your movie was found!");
+            }
+            System.out.println("Sorry we don't have that movie at this time");
             // Complete the code to search for a movie.  Make sure to include
             // messages that inform the user whether the movie was found or not.
          
