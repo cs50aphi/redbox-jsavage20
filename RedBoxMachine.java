@@ -59,7 +59,9 @@ public class RedBoxMachine
    {
       ArrayList<String> Av = new ArrayList<String>();
       for (DVD DVD : lib){
-         Av.add(DVD.toString());
+         if (DVD.getNumCopies() > 0){
+            Av.add(DVD.toString());
+         }
       }
       return Av;
       // Complete the method to get all available movie titles.
